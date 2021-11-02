@@ -1,9 +1,6 @@
 package jp.co.sample.domain;
 
 public class Administrator {
-	
-
-
 	/** id */
 	private Integer id;
 	/** 名前 */
