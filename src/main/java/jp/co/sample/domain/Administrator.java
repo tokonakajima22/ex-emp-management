@@ -14,7 +14,6 @@ public class Administrator {
 	private String password;
 	
 	public Administrator(Integer id, String name, String mailAddress, String password) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.mailAddress = mailAddress;
