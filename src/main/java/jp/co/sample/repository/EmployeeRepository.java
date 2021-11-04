@@ -20,14 +20,14 @@ public class EmployeeRepository {
 	
 	private static final RowMapper<Employee> EMPLOYEE_ROW_MAPPER = (rs, i) -> {
 		Employee employee = new Employee(rs.getInt("id"), rs.getString("name")
-				, rs.getString("image"), rs.getString("gender"),rs.getDate("hireDate")
-				, rs.getString("mailAddress"), rs.getString("zipCode"), rs.getString("address")
-				, rs.getString("telephone"), rs.getInt("salary"), rs.getString("characteristics"),rs.getInt("departmentsCount"));
+				, rs.getString("image"), rs.getString("gender"),rs.getDate("hire_date")
+				, rs.getString("mail_address"), rs.getString("zip_code"), rs.getString("address")
+				, rs.getString("telephone"), rs.getInt("salary"), rs.getString("characteristics"),rs.getInt("departments_count"));
 		return employee;
 	};
 	
 	public List<Employee> findAll(){
-		String sql = "SELECT id, name, image, gender, hireDate, mailAddress, zipCode, address, telephone, salary, characteristics, departmentsCount FROM employees ORDER BY hireDate DESC";
+		String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics, departments_count FROM employees ORDER BY hire_date DESC";
 		List<Employee> employeeList = template.query(sql,  EMPLOYEE_ROW_MAPPER);
 		return employeeList;
 	}
@@ -40,7 +40,7 @@ public class EmployeeRepository {
 	}
 	
 	public Employee update(Employee employee) {
-		String sql = "UPDATE employee SET name=:name, image=:image, gender=:gender, hireDate=:hireDate, mailAddress=:mailAddress, zipCode=:zipCode, address=:address, telephone=:telephone, salary=:salary, characteristics=:characteristics, departmentsCount=:departmentsCount WHERE id=:id";
+		String sql = "UPDATE employee SET name=:name, image=:image, gender=:gender, hire_date=:hireDate, mail_address=:mailAddress, zip_code=:zipCode, address=:address, telephone=:telephone, salary=:salary, characteristics=:characteristics, departments_count=:departmentsCount WHERE id=:id";
 		SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
 		template.update(sql, param);
 		return employee;

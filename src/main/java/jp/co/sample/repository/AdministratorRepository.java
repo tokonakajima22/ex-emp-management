@@ -14,7 +14,7 @@ import jp.co.sample.domain.Administrator;
 public class AdministratorRepository {
 	
 	private static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER = (rs, i) -> {
-		Administrator administrator = new Administrator(rs.getInt("id"), rs.getString("name"), rs.getString("mailAddress"), rs.getString("password"));
+		Administrator administrator = new Administrator(rs.getInt("id"), rs.getString("name"), rs.getString("mail_address"), rs.getString("password"));
 		return administrator;
 	};
 	
@@ -29,7 +29,8 @@ public class AdministratorRepository {
 	}
 	
 	public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
-		String sql = "SELECT id, name, mailAddress, password FROM administrators WHERE mailAddress=:mailAddress && password=:password";
+		String sql = "SELECT id, name, mail_address, password FROM administrators WHERE mail_address=:mailAddress AND password=:password";
+		
 		SqlParameterSource param = new MapSqlParameterSource().addValue("mailAddress",mailAddress).addValue("password",password);
 		try {
 			return template.queryForObject(sql, param, ADMINISTRATOR_ROW_MAPPER);
