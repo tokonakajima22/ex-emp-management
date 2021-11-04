@@ -20,6 +20,10 @@ public class Employee {
 		this.characteristics = characteristics;
 		this.dependentsCount = dependentsCount;
 	}
+	
+	public Employee() {
+	}
+	
 	/** id */
 	private Integer id;
 	/** 名前 */
