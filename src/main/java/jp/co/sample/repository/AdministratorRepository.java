@@ -19,7 +19,7 @@ public class AdministratorRepository {
 	};
 	
 	@Autowired
-	private NamedParameterJdbcTemplate template;
+	private NamedParameterJdbcTemplate template; 
 	
 	
 	public void insert(Administrator administrator) {
